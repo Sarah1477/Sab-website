@@ -24,14 +24,11 @@ class ProductController extends Controller
     // GET /api/products/{id}
     public function show($id)
     {
-        $product = Product::with('category')->find($id);
+        $product = \App\Models\Product::with(['category', 'images'])->findOrFail($id);
 
-        if (!$product) {
-            return response()->json(['message' => 'Product not found'], 404);
-        }
-
-        return response()->json($product);
+        return view('products.show', compact('product'));
     }
+
 
 // CREATE product
     public function store(Request $request)
