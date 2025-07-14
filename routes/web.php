@@ -8,15 +8,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Models\Category;
 
-// Admin-only routes
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard'); // Make sure this Blade file exists
-    });
-
-    Route::resource('products', AdminProductController::class);
-    Route::resource('categories', AdminCategoryController::class);
-});
 
 // Public pages
 Route::get('/', function () {

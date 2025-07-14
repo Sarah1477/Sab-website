@@ -17,6 +17,7 @@ public function up()
         $table->text('description')->nullable();
         $table->decimal('price', 10, 2);
         $table->unsignedInteger('stock');
+        $table->json('images')->nullable();
         $table->foreignId('category_id')->constrained()->onDelete('cascade');
         $table->timestamps();
     });
